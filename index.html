@@ -199,18 +199,25 @@
             margin-bottom: 12px;
         }
 
-        /* ক্যাপশন বক্স বড় এবং চওড়া করার স্টাইল */
+        /* ৫ লাইন বা বড় ক্যাপশন লেখার জন্য Textarea স্টাইল */
         .caption-input {
             width: 100%;
-            padding: 14px 16px;
-            border: 2px solid var(--primary-color);
+            min-height: 110px; /* প্রায় ৫ লাইন জায়গা দেখানোর জন্য */
+            padding: 12px;
+            border: 1px solid #ccc;
             border-radius: 8px;
             outline: none;
+            resize: vertical; /* ইচ্ছেমতো ছোট-বড় করা যাবে */
             background-color: var(--bg-color);
             color: var(--text-color);
-            font-size: 1.1rem;
-            font-weight: 500;
-            text-align: center;
+            font-size: 0.95rem;
+            text-align: left;
+            line-height: 1.5;
+        }
+
+        .caption-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 5px rgba(0, 106, 78, 0.3);
         }
 
         /* Facebook Style Post Box & Feed */
@@ -492,7 +499,7 @@
             </div>
         </div>
         <div class="hero-img">
-            <img src="profile .jpg" alt="Jobaier Afridi Saimun">
+            <img src="profile.jpg" alt="Jobaier Afridi Saimun">
         </div>
     </section>
 
@@ -520,43 +527,43 @@
         <div class="gallery-grid">
             <div class="gallery-item">
                 <img src="photo1.jpg" alt="Photo 1">
-                <input type="text" class="caption-input" value="কচুরিপানা বিলের পাড়ে 🌿">
+                <textarea class="caption-input">কচুরিপানা বিলের পাড়ে 🌿</textarea>
             </div>
             <div class="gallery-item">
                 <img src="photo2.jpg" alt="Photo 2">
-                <input type="text" class="caption-input" value="সাদা পাঞ্জাবি ও টুপি ✨">
+                <textarea class="caption-input">সাদা পাঞ্জাবি ও টুপি ✨</textarea>
             </div>
             <div class="gallery-item">
                 <img src="photo3.jpg" alt="Photo 3">
-                <input type="text" class="caption-input" value="ঝিকরগাছা রেলওয়ে স্টেশন 🚉">
+                <textarea class="caption-input">ঝিকরগাছা রেলওয়ে স্টেশন 🚉</textarea>
             </div>
             <div class="gallery-item">
                 <img src="photo4.jpg" alt="Photo 4">
-                <input type="text" class="caption-input" value="লাল শার্ট ও সবুজ মাঠ 🌾">
+                <textarea class="caption-input">লাল শার্ট ও সবুজ মাঠ 🌾</textarea>
             </div>
             <div class="gallery-item">
                 <img src="photo5.jpg" alt="Photo 5">
-                <input type="text" class="caption-input" value="বেনাপোল কাস্টমস হাউস 🏛️">
+                <textarea class="caption-input">বেনাপোল কাস্টমস হাউস 🏛️</textarea>
             </div>
             <div class="gallery-item">
                 <img src="photo6.jpg" alt="Photo 6">
-                <input type="text" class="caption-input" value="মিরর সেলফি মোমেন্ট 📱">
+                <textarea class="caption-input">মিরর সেলফি মোমেন্ট 📱</textarea>
             </div>
             <div class="gallery-item">
                 <img src="photo7.jpg" alt="Photo 7">
-                <input type="text" class="caption-input" value="প্রিয় মুহূর্ত 🌸">
+                <textarea class="caption-input">প্রিয় মুহূর্ত 🌸</textarea>
             </div>
             <div class="gallery-item">
                 <img src="photo8.jpg" alt="Photo 8">
-                <input type="text" class="caption-input" value="ফুলের পাশে স্মৃতি 🌺">
+                <textarea class="caption-input">ফুলের পাশে স্মৃতি 🌺</textarea>
             </div>
             <div class="gallery-item">
                 <img src="photo9.jpg" alt="Photo 9">
-                <input type="text" class="caption-input" value="সুন্দর একটি দিন 🌅">
+                <textarea class="caption-input">সুন্দর একটি দিন 🌅</textarea>
             </div>
             <div class="gallery-item">
                 <img src="photo10.jpg" alt="Photo 10">
-                <input type="text" class="caption-input" value="বাইক রাইড সেলফি 🏍️">
+                <textarea class="caption-input">বাইক রাইড সেলফি 🏍️</textarea>
             </div>
         </div>
     </section>
@@ -639,9 +646,4 @@
             const imageInput = document.getElementById('postImage');
 
             if (textContent.trim() === "" && imageInput.files.length === 0) {
-                alert("দয়া করে কিছু লিখুন অথবা ছবি সিলেক্ট করুন!");
-                return;
-            }
-
-            if (imageInput.files && imageInput.files[0]) {
-                const reader = new File
+           
