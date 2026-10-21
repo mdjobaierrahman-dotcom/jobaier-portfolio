@@ -182,7 +182,7 @@
 
         .gallery-item {
             background-color: var(--card-bg);
-            padding: 12px;
+            padding: 15px;
             border-radius: 12px;
             box-shadow: var(--shadow);
             text-align: center;
@@ -199,25 +199,18 @@
             margin-bottom: 12px;
         }
 
-        /* ৫ লাইন বা বড় ক্যাপশন লেখার জন্য Textarea স্টাইল */
-        .caption-input {
+        /* ছবির নিচের স্থায়ী ক্যাপশন স্টাইল (এডিট করা যাবে না, শুধু দেখা যাবে এবং ৫+ লাইন সাপোর্ট করবে) */
+        .gallery-caption {
             width: 100%;
-            min-height: 110px; /* প্রায় ৫ লাইন জায়গা দেখানোর জন্য */
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            outline: none;
-            resize: vertical; /* ইচ্ছেমতো ছোট-বড় করা যাবে */
+            padding: 10px;
             background-color: var(--bg-color);
             color: var(--text-color);
             font-size: 0.95rem;
             text-align: left;
-            line-height: 1.5;
-        }
-
-        .caption-input:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 5px rgba(0, 106, 78, 0.3);
+            line-height: 1.6;
+            border-radius: 8px;
+            white-space: pre-wrap; /* মাল্টি-লাইন বা প্যারাগ্রাফের লাইন ব্রেক বজায় রাখতে */
+            word-break: break-word;
         }
 
         /* Facebook Style Post Box & Feed */
@@ -527,70 +520,115 @@
         <div class="gallery-grid">
             <div class="gallery-item">
                 <img src="photo1.jpg" alt="Photo 1">
-                <textarea class="caption-input">One day, everything makes sense.
+                <div class="gallery-caption">One day, everything makes sense.
 The losses, the silence, the delays.
 You realize some things had to end,
-To make room for something new. 🖤🌿</textarea>
+To make room for something new. 🖤🌿</div>
             </div>
             <div class="gallery-item">
                 <img src="photo2.jpg" alt="Photo 2">
-                <textarea class="caption-input">সাদা পাঞ্জাবি ও টুপি ✨</textarea>
+                <div class="gallery-caption">A relationship needs two willing hearts.
+One person cannot carry everything.
+When effort comes from only one side,
+Even love begins to feel exhausting. 🥀✨</div>
             </div>
             <div class="gallery-item">
                 <img src="photo3.jpg" alt="Photo 3">
-                <textarea class="caption-input">ঝিকরগাছা রেলওয়ে স্টেশন 🚉</textarea>
+                <div class="gallery-caption"> Memories can be beautiful and painful.
+Sometimes, the past feels closer than today.
+You cannot change what has happened,
+But you can choose what happens next. 🥀🚉</div>
             </div>
             <div class="gallery-item">
                 <img src="photo4.jpg" alt="Photo 4">
-                <textarea class="caption-input">লাল শার্ট ও সবুজ মাঠ 🌾</textarea>
+                <div class="gallery-caption">Everyone fights a different battle.
+Some fight poverty, some fight loneliness.
+Never judge a person's journey,
+When you know nothing about their pain. 🖤 🌾</div>
             </div>
             <div class="gallery-item">
                 <img src="photo5.jpg" alt="Photo 5">
-                <textarea class="caption-input">বেনাপোল কাস্টমস হাউস 🏛️</textarea>
+                <div class="gallery-caption">Not every wound heals overnight.
+Not every heartbreak has a quick cure.
+Give yourself time to breathe,
+And remember that healing isn't weakness. 🌙🏛️</div>
             </div>
             <div class="gallery-item">
                 <img src="photo6.jpg" alt="Photo 6">
-                <textarea class="caption-input">মিরর সেলফি মোমেন্ট 📱</textarea>
+                <div class="gallery-caption">People leave for different reasons.
+Some explain, while others disappear.
+You may never know the whole truth,
+And sometimes, that's okay. 🖤 📱</div>
             </div>
             <div class="gallery-item">
                 <img src="photo7.jpg" alt="Photo 7">
-                <textarea class="caption-input">প্রিয় মুহূর্ত 🌸</textarea>
+                <div class="gallery-caption"> Some pain has no explanation.
+Some tears have no witnesses.
+You learn to smile through the storm,
+Because life never stops for sadness. 🌧️🌸</div>
             </div>
             <div class="gallery-item">
                 <img src="photo8.jpg" alt="Photo 8">
-                <textarea class="caption-input">ফুলের পাশে স্মৃতি 🌺</textarea>
+                <div class="gallery-caption">I am tired of saying I'm fine.
+Tired of hiding what I feel.
+Sometimes, I wish someone could understand
+The pain I never reveal. 🥀 🌺</div>
             </div>
             <div class="gallery-item">
                 <img src="photo9.jpg" alt="Photo 9">
-                <textarea class="caption-input">সুন্দর একটি দিন 🌅</textarea>
+                <div class="gallery-caption">Beautiful words can hide ugly truths.
+Sweet promises can create false hope.
+Believe what people consistently do,
+Not what they say when you are hurt. 💯🌅</div>
             </div>
             <div class="gallery-item">
                 <img src="photo10.jpg" alt="Photo 10">
-                <textarea class="caption-input">বাইক রাইড সেলফি 🏍️</textarea>
+                <div class="gallery-caption">Sometimes, the journey feels lonely.
+The people you need may disappear.
+But every step you take alone
+Can teach you your own strength. 🖤 🏍️</div>
             </div>
             <div class="gallery-item">
                 <img src="photo11.jpg" alt="Photo 11">
-                <textarea class="caption-input">সুন্দর একটি দিন 🌅</textarea>
+                <div class="gallery-caption">I stopped explaining my feelings.
+Not everyone deserves the whole story.
+Some things are better left unspoken,
+And some distances protect your peace. 🌑 🍃</div>
             </div>
             <div class="gallery-item">
                 <img src="photo12.jpg" alt="Photo 12">
-                <textarea class="caption-input">সুন্দর একটি দিন 🌅</textarea>
+                <div class="gallery-caption">Life teaches lessons through pain.
+People teach lessons through betrayal.
+Time teaches lessons through loss,
+And experience makes you wiser. 🖤 💫</div>
             </div>
             <div class="gallery-item">
                 <img src="photo13.jpg" alt="Photo 13">
-                <textarea class="caption-input">সুন্দর একটি দিন 🌅</textarea>
+                <div class="gallery-caption">Nothing stays the same forever.
+People leave, and memories remain.
+Life keeps moving without asking,
+Whether your heart is ready or not. 💔 🎯</div>
             </div>
             <div class="gallery-item">
                 <img src="photo14.jpg" alt="Photo 14">
-                <textarea class="caption-input">সুন্দর একটি দিন 🌅</textarea>
+                <div class="gallery-caption">Growing up means understanding reality.
+Not everyone will stand beside you.
+Not every effort will be appreciated,
+And not every heart will understand yours. 🌙 ☀️</div>
             </div>
             <div class="gallery-item">
                 <img src="photo15.jpg" alt="Photo 15">
-                <textarea class="caption-input">সুন্দর একটি দিন 🌅</textarea>
+                <div class="gallery-caption">Expectations can become silent pain.
+Not everyone thinks the way you do.
+Give love without losing yourself,
+And care without forgetting your worth. 🖤 🌆</div>
             </div>
             <div class="gallery-item">
                 <img src="photo16.jpg" alt="Photo 16">
-                <textarea class="caption-input">সুন্দর একটি দিন 🌅</textarea>
+                <div class="gallery-caption">Life reveals what words cannot.
+Time exposes what smiles conceal.
+When reality finally opens your eyes,
+You begin to see people differently. 🥀 📸</div>
             </div>
         </div>
     </section>
@@ -649,28 +687,4 @@ To make room for something new. 🖤🌿</textarea>
         <p>&copy; 2026 Jobaier Afridi Saimun. All Rights Reserved.</p>
         <div class="social-icons">
             <a href="https://www.facebook.com/share/1QmGCP3jdN/" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
-            <a href="https://www.youtube.com/@Gaming_Jobaier" target="_blank" rel="noopener noreferrer" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
-            <a href="https://www.tiktok.com/@jobaier_afridi_saimun" target="_blank" rel="noopener noreferrer" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-            <a href="https://api.whatsapp.com/send?phone=8801760358665" target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-            <a href="mailto:mdjobaierrahman@gmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
-        </div>
-    </footer>
-
-    <script>
-        function toggleTheme() {
-            const currentTheme = document.body.getAttribute('data-theme');
-            if (currentTheme === 'dark') {
-                document.body.removeAttribute('data-theme');
-            } else {
-                document.body.setAttribute('data-theme', 'dark');
-            }
-        }
-
-        document.addEventListener("DOMContentLoaded", loadPosts);
-
-        function addNewPost() {
-            const textContent = document.getElementById('postText').value;
-            const imageInput = document.getElementById('postImage');
-
-            if (textContent.trim() === "" && imageInput.files.length === 0) {
-           
+            <a href="https://www.youtube.
