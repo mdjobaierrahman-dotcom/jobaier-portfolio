@@ -199,7 +199,6 @@
             margin-bottom: 12px;
         }
 
-        /* ছবির নিচের স্থায়ী ক্যাপশন স্টাইল (এডিট করা যাবে না, শুধু দেখা যাবে এবং ৫+ লাইন সাপোর্ট করবে) */
         .gallery-caption {
             width: 100%;
             padding: 10px;
@@ -209,11 +208,11 @@
             text-align: left;
             line-height: 1.6;
             border-radius: 8px;
-            white-space: pre-wrap; /* মাল্টি-লাইন বা প্যারাগ্রাফের লাইন ব্রেক বজায় রাখতে */
+            white-space: pre-wrap;
             word-break: break-word;
         }
 
-        /* Facebook Style Post Box & Feed */
+        /* Post Box & Feed */
         .post-container {
             max-width: 600px;
             margin: 0 auto 30px auto;
@@ -306,6 +305,7 @@
             margin-bottom: 12px;
             word-break: break-word;
             font-size: 1.05rem;
+            white-space: pre-wrap;
         }
 
         .feed-img {
@@ -642,7 +642,7 @@ You begin to see people differently. 🥀 📸</div>
             <div class="post-form">
                 <textarea id="postText" placeholder="What's on your mind, Jobaier?"></textarea>
                 <label for="postImage" class="file-upload-label">
-                    <i class="fa-regular fa-image"></i> Photo/Video যুক্ত করুন
+                    <i class="fa-regular fa-image"></i> ছবি যুক্ত করুন
                 </label>
                 <input type="file" id="postImage" accept="image/*">
                 <br>
@@ -660,7 +660,7 @@ You begin to see people differently. 🥀 📸</div>
         <h2 class="section-title">Get In Touch</h2>
         <div class="contact-info-grid">
             <div class="contact-item">
-                <i class="fa-brands fa-whatsapp" style="color: #25D366;"></i>
+          <i class="fa-brands fa-whatsapp" style="color: #25D366;"></i>
                 <h3>WhatsApp</h3>
                 <a href="https://api.whatsapp.com/send?phone=8801760358665" target="_blank" rel="noopener noreferrer">+880 1760-358665</a>
             </div>
@@ -687,4 +687,159 @@ You begin to see people differently. 🥀 📸</div>
         <p>&copy; 2026 Jobaier Afridi Saimun. All Rights Reserved.</p>
         <div class="social-icons">
             <a href="https://www.facebook.com/share/1QmGCP3jdN/" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
-            <a href="https://www.youtube.
+            <a href="https://www.tiktok.com/@jobaier_afridi_saimun" target="_blank" rel="noopener noreferrer" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://api.whatsapp.com/send?phone=8801760358665" target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Theme Toggle Script
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Load saved theme on startup
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+            loadPosts();
+        });
+
+        // Add New Post Function
+        function addNewPost() {
+            const textInput = document.getElementById('postText');
+            const imageInput = document.getElementById('postImage');
+
+            const text = textInput.value.trim();
+            if (!text && imageInput.files.length === 0) {
+                alert('দয়া করে কিছু লিখুন অথবা একটি ছবি যুক্ত করুন!');
+                return;
+            }
+
+            if (imageInput.files && imageInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    saveAndRenderPost(text, e.target.result);
+                };
+                reader.readAsDataURL(imageInput.files[0]);
+            } else {
+                saveAndRenderPost(text, '');
+            }
+
+            textInput.value = '';
+            imageInput.value = '';
+        }
+
+        function saveAndRenderPost(text, imgSrc) {
+            const newPost = {
+                id: Date.now(),
+                text: text,
+                img: imgSrc,
+                likes: 0,
+                liked: false,
+                comments: []
+            };
+
+            let posts = JSON.parse(localStorage.getItem('user_posts')) || [];
+            posts.unshift(newPost);
+            localStorage.setItem('user_posts', JSON.stringify(posts));
+            loadPosts();
+        }
+
+        function loadPosts() {
+            const feedWrapper = document.getElementById('feedWrapper');
+            feedWrapper.innerHTML = '';
+
+            let posts = JSON.parse(localStorage.getItem('user_posts')) || [];
+
+            posts.forEach(post => {
+                const postCard = document.createElement('div');
+                postCard.className = 'feed-card';
+
+                let imageHtml = post.img ? `<img src="${post.img}" class="feed-img" alt="Post Image">` : '';
+
+                let commentsHtml = '';
+                post.comments.forEach(comment => {
+                    commentsHtml += `<div class="comment-item">${comment}</div>`;
+                });
+
+                postCard.innerHTML = `
+                    <div class="feed-header">
+                        <img src="profile.jpg" alt="Profile" class="feed-avatar">
+                        <div class="feed-user-info">
+                            <h4>Jobaier Afridi Saimun</h4>
+                            <span>Just now</span>
+                        </div>
+                    </div>
+                    <div class="feed-text">${post.text}</div>
+                    ${imageHtml}
+                    <div class="feed-actions">
+                        <button class="action-btn ${post.liked ? 'liked' : ''}" onclick="toggleLike(${post.id})">
+                            <i class="fa-solid fa-thumbs-up"></i> Like (${post.likes})
+                        </button>
+                        <button class="action-btn">
+                            <i class="fa-solid fa-comment"></i> Comment (${post.comments.length})
+                        </button>
+                    </div>
+                    <div class="comment-section">
+                        <div class="comment-list" id="comment-list-${post.id}">
+                            ${commentsHtml}
+                        </div>
+                        <div class="comment-box">
+                            <input type="text" id="comment-input-${post.id}" placeholder="Write a comment...">
+                            <button onclick="addComment(${post.id})">Send</button>
+                        </div>
+                    </div>
+                `;
+
+                feedWrapper.appendChild(postCard);
+            });
+        }
+
+        function toggleLike(postId) {
+            let posts = JSON.parse(localStorage.getItem('user_posts')) || [];
+            posts = posts.map(post => {
+                if (post.id === postId) {
+                    if (post.liked) {
+                        post.likes -= 1;
+                        post.liked = false;
+                    } else {
+                        post.likes += 1;
+                        post.liked = true;
+                    }
+                }
+                return post;
+            });
+            localStorage.setItem('user_posts', JSON.stringify(posts));
+            loadPosts();
+        }
+
+        function addComment(postId) {
+            const input = document.getElementById(`comment-input-${postId}`);
+            const commentText = input.value.trim();
+            if (!commentText) return;
+
+            let posts = JSON.parse(localStorage.getItem('user_posts')) || [];
+            posts = posts.map(post => {
+                if (post.id === postId) {
+                    post.comments.push(commentText);
+                }
+                return post;
+            });
+
+            localStorage.setItem('user_posts', JSON.stringify(posts));
+            loadPosts();
+        }
+    </script>
+</body>
+                    </html>
